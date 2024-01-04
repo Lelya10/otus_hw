@@ -1,0 +1,6 @@
+@MyService_HostAddress = http://localhost:8000
+
+GET {{MyService_HostAddress}}/health/
+Accept: application/json
+
+###
