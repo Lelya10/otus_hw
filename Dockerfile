@@ -9,7 +9,7 @@ WORKDIR "/src/MyService"
 RUN dotnet build "MyService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 RUN dotnet publish "MyService.csproj" -c $BUILD_CONFIGURATION -a $TARGETARCH -o /app/publish /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
 USER $APP_UID
 WORKDIR /app
 COPY --from=build /app/publish .
