@@ -17,8 +17,11 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         
-        string connection = builder.Configuration.GetConnectionString("DefaultConnection") + 
-                            "Username=" + Environment.GetEnvironmentVariable("USERNAME") + ";Password="+
+        string connection = builder.Configuration.GetConnectionString("ConnectionStringBeg") + 
+                            Environment.GetEnvironmentVariable("HOSTNAME") + 
+                            builder.Configuration.GetConnectionString("DefaultConnection") + 
+                            "Username=" + Environment.GetEnvironmentVariable("USERNAME") + 
+                            ";Password="+
                             Environment.GetEnvironmentVariable("PASSWORD");
  
         // добавляем контекст ApplicationContext в качестве сервиса в приложение

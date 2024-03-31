@@ -46,7 +46,7 @@ public class BDManage : DbContext
 
     public async Task<IResult> AddUser(AddUser user)
     {
-        var id = Convert.ToInt64(Users.Count() + 1);
+        var id = Users.Select(user => user.Id).Max() + 1;
         var newUser = User.CreateUser(id, user);
         try
         {
