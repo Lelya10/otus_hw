@@ -1,6 +1,12 @@
 ﻿FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/nightly/sdk:8.0-preview AS build
 ARG BUILD_CONFIGURATION=Release
 ARG TARGETARCH
+WORKDIR /app
+
+RUN apt-get update \
+        && apt-get install -y \
+            curl 
+
 WORKDIR /src
 COPY . ./MyService
 RUN dotnet restore "MyService/MyService.csproj" -a $TARGETARCH
